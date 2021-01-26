@@ -1,0 +1,31 @@
+div.container{
+  border: solid;
+  border-width: 3px;
+  text-align: center;
+}
+.frame{
+  box-sizing: border-box;
+  border: solid;
+  border-width: 3px;
+  width: 100%;
+  position: relative;
+}
+.dot {
+  height: 20px;
+  width: 20px;
+  font-size: 10px;
+  font-weight: bold;
+  color: azure;
+  border-radius: 50%;
+  border: solid;
+  border-width: 1px;
+  display: inline-block;
+  position: absolute;
+}
+.zone{
+  box-sizing: border-box;
+  margin: 10%;
+  height: 80%;
+  border: solid;
+  border-width: 1px;
+}

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row justify-content-center bg-danger">
+    <div class="col-md-8 col-sm-10 col-xs-12">
+      <div class="frame bg-warning w-100 m-3" #frame [ngStyle]="{'height': height+'px'}">
+        <div class="zone bg-white" #zone></div>
+        <span class="dot"
+        [ngStyle]="{'left': circle.x*factor+'px','top': circle.y*factor+'px', 'background-color': circle.color}"
+        *ngFor="let circle of circles" >{{circle.id}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
