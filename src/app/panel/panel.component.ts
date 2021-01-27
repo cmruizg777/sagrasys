@@ -84,15 +84,15 @@ export class PanelComponent implements OnInit {
     console.log('Me voy a subscribir');
     this.subscription = this.eventMqtt.topic()
         .subscribe((data: IMqttMessage) => {
-            let item = data.payload.toString();
+            let item = JSON.parse(data.payload.toString());
             console.log(item)
-            this.changePosition();
+            this.changePosition(item);
         });
   }
-  changePosition(){
-    const x = Math.round(Math.random() * this.width);
-    const y = Math.round(Math.random() * this.height);
-    const index = Math.round(Math.random() * 39);
+  changePosition(item){
+    const x = Math.round(item.x * this.width);
+    const y = Math.round(item.y * this.height);
+    const index = item.id ;
     this.circles[index].setPosition(x,y);
     const wz = this.zone.nativeElement.offsetWidth;
     const pz = this.width*0.1;
