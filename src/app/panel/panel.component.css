@@ -29,3 +29,7 @@ div.container{
   border: solid;
   border-width: 1px;
 }
+.info{
+  margin-top: 60px;
+  position: relative;
+}

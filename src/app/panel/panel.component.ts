@@ -26,6 +26,8 @@ export class PanelComponent implements OnInit {
   height: number = 100;
   factor = 1;
 
+  vacasFuera = 0;
+  vacasDentro = 0;
 
   private deviceId: string;
   subscription: Subscription;
@@ -56,6 +58,9 @@ export class PanelComponent implements OnInit {
       circle.setPosition(x , y);
       if (x + 10 < pz || x + 10 > pz + wz || y + 10 < pz || y + 10 > pz + wz){
         circle.color = 'red';
+        this.vacasFuera++;
+      }else{
+        this.vacasDentro++;
       }
       temp.push(circle);
     }
@@ -76,9 +81,11 @@ export class PanelComponent implements OnInit {
   }
 
   private subscribeToTopic() {
+    console.log('Me voy a subscribir');
     this.subscription = this.eventMqtt.topic()
         .subscribe((data: IMqttMessage) => {
             let item = data.payload.toString();
+            console.log(item)
             this.changePosition();
         });
   }
@@ -90,9 +97,19 @@ export class PanelComponent implements OnInit {
     const wz = this.zone.nativeElement.offsetWidth;
     const pz = this.width*0.1;
     if (x + 10 < pz || x + 10 > pz + wz || y + 10 < pz || y + 10 > pz + wz){
+      if(this.circles[index].color == 'green'){
+        this.vacasFuera++;
+        this.vacasDentro--;
+      }
       this.circles[index].color = 'red';
+
     }else{
+      if(this.circles[index].color == 'red'){
+        this.vacasFuera--;
+        this.vacasDentro++;
+      }
       this.circles[index].color = 'green';
+
     }
   }
 }

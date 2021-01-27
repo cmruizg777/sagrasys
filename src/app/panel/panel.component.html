@@ -1,4 +1,13 @@
+
 <div class="container">
+  <div class="row bg-danger p-3 info">
+    <h2 class="text-white">Vacas Fuera del Corral: </h2>
+    <h2 class="text-white">&emsp;{{vacasFuera}}</h2>
+  </div>
+  <div class="row bg-success p-3">
+    <h2 class="text-white">Vacas Dentro del Corral: </h2>
+    <h2 class="text-white">&emsp;{{vacasDentro}}</h2>
+  </div>
   <div class="row justify-content-center bg-danger">
     <div class="col-md-8 col-sm-10 col-xs-12">
       <div class="frame bg-warning w-100 m-3" #frame [ngStyle]="{'height': height+'px'}">
